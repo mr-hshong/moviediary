@@ -22,3 +22,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(App\Diary::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+        'seen_date' => $faker->date('2016-m-d'),
+        'body' => $faker->paragraph,
+        'user_id' => App\User::all()->random()->id,
+        'movie_id' => App\Movie::all()->random()->id
+    ];
+});

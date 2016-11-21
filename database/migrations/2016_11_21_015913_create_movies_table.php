@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDiariesTable extends Migration
+class CreateMoviesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateDiariesTable extends Migration
      */
     public function up()
     {
-        Schema::create('diaries', function (Blueprint $table){
-           $table->increments('id');
-           $table->date('seen_date');
-           $table->text('body');
-           $table->timestamps();
-
+        Schema::create('movies', function (Blueprint $table){
+            $table->increments('id');
+            $table->integer('code');
+            $table->string('title');
+            $table->string('title_en');
+            $table->integer('release_date');
+            $table->timestamps();
         });
-
     }
 
     /**
@@ -30,6 +30,6 @@ class CreateDiariesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('diaries');
+        Schema::drop('movies');
     }
 }

@@ -1,8 +1,4 @@
-@extends('master')
-
-@section('style')
-
-@stop
+@extends('layouts.app')
 
 @section('content')
 
@@ -19,6 +15,7 @@
                     <thead>
                     <th>Movie Title</th>
                     <th>Release date</th>
+                    <th>Diaries</th>
                     <th>More info</th>
                     </thead>
 
@@ -28,14 +25,22 @@
                         <tr>
                             <!-- Movie Name -->
                             <td class="table-text">
-                                <div>{{ $movie->movieNm }}</div>
+                                <div>{{ $movie->title }}</div>
                             </td>
                             <td>
-                                <div>{{ $movie->openDt }}</div>
+                                <div>{{ $movie->release_date }}</div>
+                            </td>
+                            <td>
+                                <div>{{ $movie->diariescount }}</div>
                             </td>
 
                             <td>
-                                <!-- Seen Button -->
+                                <!-- Watched Button -->
+                                <a href="{{  url('diaries/write') }}?movie_id={{ $movie->id  }}">
+                                <button type="button" class="btn btn-default">
+                                        <i class="fa fa-plus"></i> Write My Diary
+                                </button>
+                                </a>
                             </td>
                         </tr>
                     @endforeach
@@ -44,8 +49,4 @@
             </div>
         </div>
     @endif
-@stop
-
-@section('script')
-
-@stop
+@endsection
